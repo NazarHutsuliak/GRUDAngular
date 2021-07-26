@@ -5,17 +5,55 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { Component } from '@angular/core';
+import { DataService } from './data.service';
+import { Product } from './product';
 let AppComponent = class AppComponent {
-    constructor() {
-        this.name = '';
+    constructor(dataService) {
+        this.dataService = dataService;
+        this.product = new Product(); // изменяемый товар
+        this.tableMode = true; // табличный режим
+    }
+    ngOnInit() {
+        this.loadProducts(); // загрузка данных при старте компонента  
+    }
+    // получаем данные через сервис
+    loadProducts() {
+        this.dataService.getProducts()
+            .subscribe((data) => this.products = data);
+    }
+    // сохранение данных
+    save() {
+        if (this.product.id == null) {
+            this.dataService.createProduct(this.product)
+                .subscribe((data) => this.products.push(data));
+        }
+        else {
+            this.dataService.updateProduct(this.product)
+                .subscribe(data => this.loadProducts());
+        }
+        this.cancel();
+    }
+    editProduct(p) {
+        this.product = p;
+    }
+    cancel() {
+        this.product = new Product();
+        this.tableMode = true;
+    }
+    delete(p) {
+        this.dataService.deleteProduct(p.id)
+            .subscribe(data => this.loadProducts());
+    }
+    add() {
+        this.cancel();
+        this.tableMode = false;
     }
 };
 AppComponent = __decorate([
     Component({
         selector: 'app',
-        template: `<label>Введите имя:</label>
-                 <input [(ngModel)]="name" placeholder="name">
-                 <h2>Добро пожаловать {{name}}!</h2>`
+        templateUrl: './app.component.html',
+        providers: [DataService]
     })
 ], AppComponent);
 export { AppComponent };

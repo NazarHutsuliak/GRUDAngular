@@ -1,20 +1,26 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 	 
 	  <PropertyGroup>
-		    <TargetFramework>netcoreapp3.1</TargetFramework>
+		    <TargetFramework>netcoreapp3.1</TargetFramework><UserSecretsId>a87221f1-f4b0-4e0e-8d20-acfda05501ae</UserSecretsId>
 		  
 	</PropertyGroup>
 	 
 	  <ItemGroup>
 		    <None Remove="ClientApp\src\app\app.component.ts" />
-		    <None Remove="ClientApp\src\app\app.module.ts" />
+		    <None Remove="ClientApp\src\app\app.module.ts" /><None Remove="ClientApp\src\app\product.ts" />
 		    <None Remove="ClientApp\src\main.ts" />
 		    <None Remove="ClientApp\src\polyfills.ts" />
 		  
 	</ItemGroup>
 	 
 	  <ItemGroup>
-		    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.5" />
+		    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.17" /><PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.8" /><PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
+  <PrivateAssets>all</PrivateAssets>
+  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+</PackageReference><PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.3.5">
+  <PrivateAssets>all</PrivateAssets>
+  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+</PackageReference>
 		  
 	</ItemGroup>
 	 
