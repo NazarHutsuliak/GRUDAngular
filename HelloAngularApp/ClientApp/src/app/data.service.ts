@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Product } from './product';
+import { Account } from './account';
 
 @Injectable()
 export class DataService {
@@ -10,22 +10,22 @@ export class DataService {
     constructor(private http: HttpClient) {
     }
 
-    getProducts() {
+    getAccounts() {
         return this.http.get(this.url);
     }
 
-    getProduct(id: number) {
+    getAccount(id: number) {
         return this.http.get(this.url + '/' + id);
     }
 
-    createProduct(product: Product) {
+    createAccount(product: Account) {
         return this.http.post(this.url, product);
     }
-    updateProduct(product: Product) {
+    updateAccount(product: Account) {
 
         return this.http.put(this.url, product);
     }
-    deleteProduct(id: number) {
+    deleteAccount(id: number) {
         return this.http.delete(this.url + '/' + id);
     }
 }

@@ -6,43 +6,43 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 import { Component } from '@angular/core';
 import { DataService } from './data.service';
-import { Product } from './product';
+import { Account } from './account';
 let AppComponent = class AppComponent {
     constructor(dataService) {
         this.dataService = dataService;
-        this.product = new Product(); // изменяемый товар
-        this.tableMode = true; // табличный режим
+        this.account = new Account();
+        this.tableMode = true;
     }
     ngOnInit() {
-        this.loadProducts(); // загрузка данных при старте компонента  
+        this.loadAccounts(); // загрузка данных при старте компонента  
     }
     // получаем данные через сервис
-    loadProducts() {
-        this.dataService.getProducts()
-            .subscribe((data) => this.products = data);
+    loadAccounts() {
+        this.dataService.getAccounts()
+            .subscribe((data) => this.accounts = data);
     }
     // сохранение данных
     save() {
-        if (this.product.id == null) {
-            this.dataService.createProduct(this.product)
-                .subscribe((data) => this.products.push(data));
+        if (this.account.id == null) {
+            this.dataService.createAccount(this.account)
+                .subscribe((data) => this.accounts.push(data));
         }
         else {
-            this.dataService.updateProduct(this.product)
-                .subscribe(data => this.loadProducts());
+            this.dataService.updateAccount(this.account)
+                .subscribe(data => this.loadAccounts());
         }
         this.cancel();
     }
-    editProduct(p) {
-        this.product = p;
+    editAccount(p) {
+        this.account = p;
     }
     cancel() {
-        this.product = new Product();
+        this.account = new Account();
         this.tableMode = true;
     }
     delete(p) {
-        this.dataService.deleteProduct(p.id)
-            .subscribe(data => this.loadProducts());
+        this.dataService.deleteAccount(p.id)
+            .subscribe(data => this.loadAccounts());
     }
     add() {
         this.cancel();

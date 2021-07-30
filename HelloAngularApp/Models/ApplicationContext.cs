@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace HelloAngularApp.Models
+namespace AccountsWeb.Models
 {
     public class ApplicationContext : DbContext
     {
@@ -10,6 +10,6 @@ namespace HelloAngularApp.Models
             Database.EnsureCreated();
         }
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Account> Accounts { get; set; }
     }
 }

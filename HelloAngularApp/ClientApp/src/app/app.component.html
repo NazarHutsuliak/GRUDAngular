@@ -1,22 +1,28 @@
-﻿<h1>Список моделей</h1>
+﻿<h1>Аккаунты</h1>
 <input type="button" value="Добавить" class="btn btn-default" (click)="add()" />
 <table *ngIf="tableMode; else create" class="table table-striped">
     <thead>
         <tr>
-            <td>Модель</td>
-            <td>Производитель</td>
-            <td>Цена</td>
+            <td>Имя</td>
+            <td>Фамилия</td>
+            <td>Баланс</td>
+            <td>Валюта</td>
+            <td>Город</td>
+            <td>Возраст</td>
             <td></td>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let p of products">
-            <ng-template [ngIf]="product?.id != p.id" [ngIfElse]="edit">
+        <tr *ngFor="let p of accounts">
+            <ng-template [ngIf]="account?.id != p.id" [ngIfElse]="edit">
                 <td>{{p?.name}}</td>
-                <td>{{p?.company}}</td>
-                <td>{{p?.price}}</td>
+                <td>{{p?.surname}}</td>
+                <td>{{p?.balance}}</td>
+                <td>{{p?.currency}}</td>
+                <td>{{p?.city}}</td>
+                <td>{{p?.age}}</td>
                 <td>
-                    <button class="btn btn-sm btn-primary" (click)="editProduct(p)">Изменить</button>
+                    <button class="btn btn-sm btn-primary" (click)="editAccount(p)">Изменить</button>
                     <button class="btn btn-sm btn-danger" (click)="delete(p)">Удалить</button>
                 </td>
             </ng-template>
@@ -27,13 +33,22 @@
 <!--шаблон для редактирования-->
 <ng-template #edit>
     <td>
-        <input type="text" [(ngModel)]="product.name" class="form-control" />
+        <input type="text" [(ngModel)]="account.name" class="form-control" />
     </td>
     <td>
-        <input type="text" [(ngModel)]="product.company" class="form-control" />
+        <input type="text" [(ngModel)]="account.surname" class="form-control" />
     </td>
     <td>
-        <input type="number" [(ngModel)]="product.price" class="form-control" />
+        <input type="number" [(ngModel)]="account.balance" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="account.currency" class="form-control" />
+    </td>
+    <td>
+        <input type="text" [(ngModel)]="account.city" class="form-control" />
+    </td>
+    <td>
+        <input type="number" [(ngModel)]="account.age" class="form-control" />
     </td>
     <td>
         <input type="button" value="Сохранить" (click)="save()" class="btn btn-sm btn-success" />
@@ -44,16 +59,28 @@
 <!--шаблон для добавления-->
 <ng-template #create>
     <div class="form-group">
-        <label>Модель</label>
-        <input type="text" [(ngModel)]="product.name" class="form-control" />
+        <label>Имя</label>
+        <input type="text" [(ngModel)]="account.name" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Производитель</label>
-        <input type="text" [(ngModel)]="product.company" class="form-control" />
+        <label>Фамилия</label>
+        <input type="text" [(ngModel)]="account.surname" class="form-control" />
     </div>
     <div class="form-group">
-        <label>Цена</label>
-        <input type="number" [(ngModel)]="product.price" class="form-control" />
+        <label>Баланс</label>
+        <input type="number" [(ngModel)]="account.balance" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Валюта</label>
+        <input type="text" [(ngModel)]="account.currency" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Город</label>
+        <input type="text" [(ngModel)]="account.city" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Возраст</label>
+        <input type="number" [(ngModel)]="account.age" class="form-control" />
     </div>
     <div>
         <input type="button" value="Сохранить" (click)="save()" class="btn btn-success" />

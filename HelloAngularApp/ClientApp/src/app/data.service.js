@@ -10,19 +10,19 @@ let DataService = class DataService {
         this.http = http;
         this.url = "/api/products";
     }
-    getProducts() {
+    getAccounts() {
         return this.http.get(this.url);
     }
-    getProduct(id) {
+    getAccount(id) {
         return this.http.get(this.url + '/' + id);
     }
-    createProduct(product) {
+    createAccount(product) {
         return this.http.post(this.url, product);
     }
-    updateProduct(product) {
+    updateAccount(product) {
         return this.http.put(this.url, product);
     }
-    deleteProduct(id) {
+    deleteAccount(id) {
         return this.http.delete(this.url + '/' + id);
     }
 };
